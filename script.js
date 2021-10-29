@@ -271,7 +271,7 @@ let searching = (q) =>  fetchedData.news.filter(elem => elem.fields.headline.toL
 let wrongChainSearching = (wq) => {
 let arrFromQuery = wq.split('')
     console.log(arrFromQuery)
-    let result = null
+    let result = ''
     let itemHeaderArr =  fetchedData.news.map(elem => elem.fields.headline.toLowerCase().split(' '))
      itemHeaderArr.forEach((innerArr,i,thisArr1) => {
          innerArr.forEach((str, i,thisArr2) => {
@@ -295,13 +295,17 @@ function searchNews(query) {
     let searchResultWithTranslate =  searching(replaceLangQuery)
     let searchWithWrongChain = wrongChainSearching(preparedQuery)
        if(searchResult.length !== 0){
+           console.log("1")
            return searchResult
        } else if (searchResultWithTranslate.length !== 0) {
+           console.log("2")
            return searchResultWithTranslate
        } else if (searchWithWrongChain.length !== 0){
+           console.log("3")
            return searchWithWrongChain
        }
        else
+           console.log("4")
            return 'No exact matches found'
 }
 
